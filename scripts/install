@@ -35,7 +35,7 @@ sudo chmod 750 $final_path/AdhocLaunch.sh
 sudo sed -i "s,FINALPATH_EXECUTABLE,su - adhocserver -c $final_path/AdhocLaunch.sh 2>/dev/null 1>&2,g" /etc/init.d/adhocserver
 
 #add adhocserver as yunohost service
-sudo yunohost service add adhocserver -l $log_file
+sudo yunohost service add adhocserver #-l $log_file because log doesn't work yet
 
 #open port
 sudo yunohost firewall allow TCP 27312
