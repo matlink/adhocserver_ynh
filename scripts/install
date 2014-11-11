@@ -17,7 +17,7 @@ sudo chmod 750 -R $final_path
 sudo cp ../src/* $final_path
 
 #build binary
-sudo make $final_path
+sudo make -C $final_path
 
 #copy service file and set permissions
 sudo cp ../service/adhocserver /etc/init.d/
