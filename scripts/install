@@ -23,10 +23,15 @@ sudo make -C $final_path
 sudo cp ../service/adhocserver /etc/init.d/
 sudo chmod 755 /etc/init.d/adhocserver
 sudo chown root:root /etc/init.d/adhocserver
+#copying and setting the adhoc launcher script
+sudo cp ../service/AdhocLaunch.sh $final_path
+sudo chown adhocserver:adhocserver $final_path/AdhocLaunch.sh
+sudo chmod 750 $final_path/AdhocLaunch.sh
 
 #replace in service file the path to the binary executed with
-#our newly created user
-sudo sed -i "s,FINALPATH_EXECUTABLE,su - adhocserver -c $final_path/AdhocServer,g" /etc/init.d/adhocserver
+#our newly created user. this will disallow an attaker to ger root
+#rights if he introduces on système by this script
+sudo sed -i "s,FINALPATH_EXECUTABLE,su - adhocserver -c $final_path/AdhocLaunch.sh,g" /etc/init.d/adhocserver
 
 #add adhocserver as yunohost service
 sudo yunohost service add adhocserver
