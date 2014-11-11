@@ -9,6 +9,9 @@ sudo apt-get install -y -qq make libsqlite3-dev
 
 #add user with custom home
 sudo useradd adhocserver -d $final_path
+sudo mkdir -p $final_path
+sudo chown adhocserver:adhocserver -R $final_path
+sudo chmod 750 -R $final_path
 
 #copy file to dest folder
 sudo cp ../src/* $final_path
