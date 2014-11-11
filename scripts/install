@@ -24,6 +24,7 @@ sudo make -C $final_path
 sudo cp ../service/adhocserver /etc/init.d/
 sudo chmod 755 /etc/init.d/adhocserver
 sudo chown root:root /etc/init.d/adhocserver
+
 #copying and setting the adhoc launcher script
 sudo cp ../service/AdhocLaunch.sh $final_path
 sudo chown adhocserver:adhocserver $final_path/AdhocLaunch.sh
