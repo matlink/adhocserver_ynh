@@ -4,8 +4,8 @@
 final_path=/home/yunohost.adhocserver/
 
 #install required packages
-sudo apt-get update
-sudo apt-get install -y make libsqlite3-dev
+sudo apt-get update -qq
+sudo apt-get install -y make libsqlite3-dev -qq
 
 #add user with custom home
 sudo useradd -d $final_path
