@@ -2,6 +2,7 @@
 
 #dest folder
 final_path=/home/yunohost.adhocserver/
+log_file=/var/log/adhocserver.log
 
 #install required packages
 sudo apt-get update -qq
@@ -31,7 +32,7 @@ sudo chmod 750 $final_path/AdhocLaunch.sh
 #replace in service file the path to the binary executed with
 #our newly created user. this will disallow an attaker to ger root
 #rights if he introduces on système by this script
-sudo sed -i "s,FINALPATH_EXECUTABLE,su - adhocserver -c $final_path/AdhocLaunch.sh,g" /etc/init.d/adhocserver
+sudo sed -i "s,FINALPATH_EXECUTABLE,su - adhocserver -c $final_path/AdhocLaunch.sh 2>$log_file 1>&2,g" /etc/init.d/adhocserver
 
 #add adhocserver as yunohost service
 sudo yunohost service add adhocserver
