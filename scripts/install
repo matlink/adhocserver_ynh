@@ -1,0 +1,30 @@
+#! /bin/bash
+
+#dest folder
+final_path=/home/yunohost.adhocserver/
+
+#install required packages
+sudo apt-get update
+sudo apt-get install -y make libsqlite3-dev
+
+#add user with custom home
+sudo useradd -d $final_path
+
+#copy file to dest folder
+sudo cp ../src/* $final_path
+
+#build binary
+sudo make $final_path
+
+#copy service file and set permissions
+sudo cp ../service/adhocserver /etc/init.d/
+sudo chmod 755 /etc/init.d/adhocserver
+sudo chown root:root /etc/init.d/adhocserver
+
+#replace in service file the path to the binary executed with
+#our newly created user
+sudo sed -i "s/FINALPATH_EXECUTABLE/su - adhocserver -c $final_path/AdhocServer/g" /etc/init.d/adhocserver
+
+#add adhocserver as yunohost service
+sudo yunohost service add adhocserver
+

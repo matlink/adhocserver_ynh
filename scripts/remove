@@ -1,0 +1,6 @@
+#! /bin/bash
+
+#remove user and its home
+sudo deluser adhocserver --remove-home
+#remove service file 
+sudo rm -f /etc/init.d/adhocserver

@@ -1,0 +1,19 @@
+{
+    "name": "adhocserver",
+    "id": "adhocserver",
+    "description": {
+        "en": "An adhoc Server for the sony PSP",
+        "fr": "Un serveur adhoc pour la PSP de sony"
+    },
+    "developer": {
+        "name": "matlink",
+        "email": "matlink@matlink.fr",
+        "url": ""
+    },
+    "multi_instance": "false",
+    "license": "",
+    "arguments": {
+        "install" : [
+        ]
+    }
+}
