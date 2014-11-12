@@ -2,9 +2,15 @@
 
 #remove user and its home
 sudo deluser adhocserver --remove-home
+
+#stopping service
+sudo service adhocserver stop
+
 #remove service file 
 sudo rm -f /etc/init.d/adhocserver
+
 #close port
 sudo yunohost firewall disallow TCP 27312
+
 #delete service
 sudo yunohost service remove adhocserver
